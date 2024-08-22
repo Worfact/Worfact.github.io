@@ -58,7 +58,7 @@ jobs:
 
       - name: Show Response
         run: |
-          echo  ${{ fromJson(steps.myRequest.outputs.response).result.random.data }} >> ./docs/index.html
+          echo  ${{ fromJson(steps.myRequest.outputs.response).result.random.data[0] }} >> ./docs/index.html
 
       - name: Commit and push changes
         run: |
@@ -71,6 +71,9 @@ jobs:
     needs: job2
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.3.2
+
       - name: Pull changes
         run: |
           git config --local user.name "${{ secrets.GH_USERENAME }}"
