@@ -22,6 +22,15 @@ jobs:
       - name: Add head template to index.html
         run: |
           cat  ./docs/template/head.html >> ./docs/index.html
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "${{ secrets.GH_USERENAME }}"
+          git config --local user.email "${{ secrets.GH_EMAIL }}"
+    
+          git add -A
+          git commit -m "ADD - head"
+          git push
     
   job2:
     name: Fetch data
@@ -44,6 +53,15 @@ jobs:
         run: |
           echo  ${{ fromJson(steps.myRequest.outputs.response).result.random.data }} >> ./docs/index.html
 
+      - name: Commit and push changes
+        run: |
+          git config --local user.name "${{ secrets.GH_USERENAME }}"
+          git config --local user.email "${{ secrets.GH_EMAIL }}"
+    
+          git add -A
+          git commit -m "ADD - fetched data"
+          git push
+
   job3:
     name: Fill and push index.html
     needs: job2
@@ -58,9 +76,9 @@ jobs:
     
       - name: Commit and push changes
         run: |
-          git config --global user.name "${{ secrets.GH_USERENAME }}"
-          git config --global user.email "${{ secrets.GH_EMAIL }}"
+          git config --local user.name "${{ secrets.GH_USERENAME }}"
+          git config --local user.email "${{ secrets.GH_EMAIL }}"
     
           git add -A
-          git commit -m "commit message"
+          git commit -m "ADD - tail"
           git push
