@@ -28,6 +28,9 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.3.2
+
       - name: Get random number
         id: myRequest
         uses: fjogeleit/http-request-action@v1
@@ -39,13 +42,16 @@ jobs:
 
       - name: Show Response
         run: |
-          echo  ${{ fromJson(steps.myRequest.outputs.response).result.random.data }}
+          echo  ${{ fromJson(steps.myRequest.outputs.response).result.random.data }} >> ./docs/index.html
 
   job3:
     name: Fill and push index.html
     needs: job2
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.3.2
+        
       - name: Add tail template to index.html
         run: |
           cat ./docs/template/tail.html >> ./docs/index.html 
