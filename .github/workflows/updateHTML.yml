@@ -25,8 +25,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.name "${{ secrets.GH_USERENAME }}"
-          git config --local user.email "${{ secrets.GH_EMAIL }}"
+          git config --global user.name "${{ secrets.GH_USERENAME }}"
+          git config --global user.email "${{ secrets.GH_EMAIL }}"
     
           git add -A
           git commit -m "ADD - head"
@@ -39,8 +39,8 @@ jobs:
     steps:
       - name: Pull changes
         run: |
-          git config --local user.name "${{ secrets.GH_USERENAME }}"
-          git config --local user.email "${{ secrets.GH_EMAIL }}"
+          git config --global user.name "${{ secrets.GH_USERENAME }}"
+          git config --global user.email "${{ secrets.GH_EMAIL }}"
     
           git pull
 
