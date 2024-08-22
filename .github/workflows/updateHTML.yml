@@ -7,11 +7,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.3.2
-        
-      - name: Create index.html
+
+      - name: Delete  index.html
         run: |
-          rm -f  ./docs/index.html
-          touch ./docs/index.html
+            rm -f  ./docs/index.html
+
+      - name: Create index.html
+        uses: 1arp/create-a-file-action@0.4.5
+        with:
+          path: 'docs'
+          isAbsolutePath: false
+          file: 'index.html'
 
       - name: Add head template to index.html
         run: |
