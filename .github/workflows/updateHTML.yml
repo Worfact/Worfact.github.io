@@ -37,6 +37,9 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.3.2
+
       - name: Pull changes
         run: |
           git config --global user.name "${{ secrets.GH_USERENAME }}"
