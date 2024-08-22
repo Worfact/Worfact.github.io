@@ -54,7 +54,7 @@ jobs:
           url: 'https://api.random.org/json-rpc/4/invoke'
           method: 'POST'
           customHeaders: '{"Content-Type": "application/json"}'
-          data: '{"jsonrpc": "2.0", "method": "generateIntegers", "id": "1", "params": {"apiKey": "${{ secrets.RAND_APIKEY }}", "n": 1, "min": 0, "max": 1e9}}'
+          data: '{"jsonrpc": "2.0", "method": "generateIntegers", "id": "1", "params": {"apiKey": "${{ secrets.RAND_APIKEY }}", "n": 1, "min": 0, "max": 1e4}}'
 
       - name: Show Response
         run: |
