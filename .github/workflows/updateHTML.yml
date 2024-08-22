@@ -21,8 +21,8 @@ jobs:
     
       - name: Commit and push changes
         run: |
-          git config --global user.name "uusername"
-          git config --global user.email "your email"
+          git config --global user.name "${{ secrets.GH_USERENAME }}"
+          git config --global user.email "${{ secrets.GH_EMAIL }}"
     
           git add -A
           git commit -m "commit message"
