@@ -19,6 +19,7 @@ jobs:
     
   job2:
     name: Fetch data
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: Get random number
